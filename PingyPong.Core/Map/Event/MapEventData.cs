@@ -1,5 +1,8 @@
 namespace PingyPong.Map
 {
+    /// <summary>
+    /// The information for events in the map json
+    /// </summary>
     public class MapEventData()
     {
         public MapEventAction Action { get; set; }

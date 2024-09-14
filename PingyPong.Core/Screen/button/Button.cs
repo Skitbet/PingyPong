@@ -5,7 +5,8 @@ using Microsoft.Xna.Framework.Input;
 
 namespace PingyPong.Screen
 {
-    public class Button {
+    public class Button
+    {
         private Texture2D _texture;
         private SpriteFont _font;
         private string _text;
@@ -20,7 +21,8 @@ namespace PingyPong.Screen
         public event EventHandler OnClick;
         public bool Clicked { get; private set; }
 
-        public Button(Texture2D texture, SpriteFont font, string text, Vector2 position) {
+        public Button(Texture2D texture, SpriteFont font, string text, Vector2 position)
+        {
             _texture = texture;
             _font = font;
             _text = text;
@@ -34,7 +36,8 @@ namespace PingyPong.Screen
             _bounds = new Rectangle((int)position.X, (int)position.Y, _texture.Width, _texture.Height);
         }
 
-        public void Update(GameTime time) {
+        public void Update(GameTime time)
+        {
             var mouseState = Mouse.GetState();
             var mousePosition = new Vector2(mouseState.X, mouseState.Y);
 
@@ -42,16 +45,19 @@ namespace PingyPong.Screen
             _isHovering = _bounds.Contains(mousePosition);
 
             // handling button clicking
-            if (_isHovering && mouseState.LeftButton == ButtonState.Pressed) {
+            if (_isHovering && mouseState.LeftButton == ButtonState.Pressed)
+            {
                 Clicked = true;
                 OnClick?.Invoke(this, EventArgs.Empty);
             }
-            else {
+            else
+            {
                 Clicked = false;
             }
         }
 
-        public void Draw(SpriteBatch spriteBatch) {
+        public void Draw(SpriteBatch spriteBatch)
+        {
             var color = _isHovering ? _hoverColor : _defaultColor;
 
             spriteBatch.Draw(_texture, _bounds, color);

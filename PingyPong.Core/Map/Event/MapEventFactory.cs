@@ -9,6 +9,12 @@ namespace PingyPong.Map
 {
     public static class MapEventFactory
     {
+        /// <summary>
+        /// Creates the MapEvent from the json data provided
+        /// </summary>
+        /// <param name="data"></param>
+        /// <returns></returns>
+        /// <exception cref="ArgumentException"></exception>
         public static MapEvent CreateEvent(MapEventData data)
         {
             switch (data.Action)

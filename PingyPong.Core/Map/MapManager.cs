@@ -38,28 +38,37 @@ namespace PingyPong.Map
 
         public void LoadMap(string fileName)
         {
+            // load the map json and set current map
             string json = File.ReadAllText(Path.Combine(gameFolderPath, fileName));
             currentMap = JsonConvert.DeserializeObject<RhythmMap>(json);
 
+            // get the MapEvents
             events = currentMap.CreateEventList();
 
-            using (var stream = new FileStream(Path.Combine(backgroundFolder, currentMap.Background), FileMode.Open)) {
+            // Set the map background
+            using (var stream = new FileStream(Path.Combine(backgroundFolder, currentMap.Background), FileMode.Open))
+            {
                 backgroundTexture = Texture2D.FromStream(PingyPongGame.instance.GraphicsDevice, stream);
                 stream.Close();
             }
 
+            // setup the event processor
             eventProcessor = new EventProcessor(events);
+
+            // begin play song
             PlaySong();
         }
 
         public void Update(GameScreen screen)
         {
+            // update event processor
             float elapsedTime = (float)MediaPlayer.PlayPosition.TotalMilliseconds;
             eventProcessor.Update(elapsedTime, screen);
         }
 
-        public void DrawBackground(SpriteBatch _batch) {
-
+        public void DrawBackground(SpriteBatch _batch)
+        {
+            _batch.Draw(backgroundTexture, new Rectangle(0, 0, _batch.GraphicsDevice.Viewport.Width, _batch.GraphicsDevice.Viewport.Height), Color.White);
         }
 
         private void PlaySong()

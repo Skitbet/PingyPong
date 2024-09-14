@@ -21,6 +21,7 @@ namespace PingyPong.Map
         {
             currentTime = gameTime;
 
+            // loop though each event and fire the ones that are ready
             for (int i = events.Count - 1; i >= 0; i--)
             {
                 var mapEvent = events[i];

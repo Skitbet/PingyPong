@@ -27,8 +27,21 @@ namespace PingyPong.Screen
             Update(time);
         }
 
+        /// <summary>
+        /// The screen initialize function, use to load content and init classes
+        /// </summary>
         public abstract void LoadContent();
+
+        /// <summary>
+        /// Screen update function
+        /// </summary>
+        /// <param name="time"></param>
         public abstract void Update(GameTime time);
+
+        /// <summary>
+        /// Screen draw function
+        /// </summary>
+        /// <param name="batch"></param>
         public abstract void Draw(SpriteBatch batch);
     }
 }

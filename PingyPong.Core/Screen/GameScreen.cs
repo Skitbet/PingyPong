@@ -25,10 +25,14 @@ namespace PingyPong.Screen
 
         public GameScreen()
         {
+            // init the mapManager
             mapManager = new MapManager();
+
+            // create the paddles
             leftPaddle = new Paddle(30, height / 2 - 50, 10, 100, 300f, Keys.W, Keys.S);
             rightPaddle = new Paddle(width - 40, height / 2 - 50, 10, 100, 300f, Keys.Up, Keys.Down);
 
+            // create the ball with game over callback
             ball = new Ball(width / 2, height / 2, 10, 10, 200f,
                 gameOverCallback: () =>
                 {
@@ -39,10 +43,14 @@ namespace PingyPong.Screen
 
         public override void LoadContent()
         {
+            // set mouse visible to false
             game.IsMouseVisible = false;
+
+            // load paddle and ball texture
             paddleTexture = game.Content.Load<Texture2D>("paddle");
             ballTexture = game.Content.Load<Texture2D>("ball");
 
+            // TODO: proper map selection
             mapManager.LoadMap("testMap.json");
         }
 

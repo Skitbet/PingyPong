@@ -28,9 +28,7 @@ namespace PingyPong
 
         protected override void Initialize()
         {
-            int w = GraphicsDevice.Viewport.Width;
-            int h = GraphicsDevice.Viewport.Height;
-
+            // Create the game managers and states
             gameStateManager = new GameStateManager();
             screenManager = new ScreenManager();
 
@@ -47,6 +45,7 @@ namespace PingyPong
 
         protected override void Update(GameTime gameTime)
         {
+            // Update the current screen 
             screenManager.UpdateScreen(gameTime);
 
             // Handle exiting
@@ -59,8 +58,10 @@ namespace PingyPong
 
         protected override void Draw(GameTime gameTime)
         {
+            // Default background just incase, should be override in screens
             GraphicsDevice.Clear(Color.CornflowerBlue);
 
+            // Draw screens
             screenManager.DrawScreen(_spriteBatch);
 
             base.Draw(gameTime);
