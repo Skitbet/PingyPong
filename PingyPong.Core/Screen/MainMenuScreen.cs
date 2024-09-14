@@ -40,7 +40,5 @@ namespace PingyPong.Screen
             playButton.Draw(batch);
             batch.End();
         }
-
-
     }
 }
