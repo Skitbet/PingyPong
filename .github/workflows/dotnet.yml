@@ -21,10 +21,10 @@ jobs:
       with:
         dotnet-version: 8.0.x
     - name: Install dependencies
-      run: dotnet restore ${GITHUB_WORKSPACE}/PingyPong.DesktopGL/PingyPong.DesktopGL.csproj
+      run: dotnet restore ./PingyPong.DesktopGL/PingyPong.DesktopGL.csproj
 
     - name: Build project
-      run: dotnet build -p:Configuration=Debug ${GITHUB_WORKSPACE}/PingyPong.DesktopGL/PingyPong.DesktopGL.csproj
+      run: dotnet build -p:Configuration=Debug ./PingyPong.DesktopGL/PingyPong.DesktopGL.csproj
 
     - name: Run tests
       run: dotnet test --no-restore --verbosity normal
