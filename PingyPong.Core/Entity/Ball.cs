@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using PingyPong;
 using System;
+using System.Diagnostics;
 
 namespace PingyPong.Entity
 {
@@ -18,7 +19,9 @@ namespace PingyPong.Entity
 
         public override void Update(GameTime time)
         {
+            Debug.WriteLine(Position);
             var deltaTime = (float)time.ElapsedGameTime.TotalSeconds;
+
             Move(velocity * deltaTime);
 
             // Handle falling out of map on bottom or top
@@ -34,7 +37,7 @@ namespace PingyPong.Entity
             }
         }
 
-        public void HandlePaddleCollission(Paddle leftPaddle, Paddle rightPaddle)
+        public void HandlePaddleCollision(Paddle leftPaddle, Paddle rightPaddle)
         {
             if (Rectangle.Intersects(leftPaddle.Rectangle) || Rectangle.Intersects(rightPaddle.Rectangle))
             {
@@ -42,9 +45,5 @@ namespace PingyPong.Entity
             }
         }
 
-        public void UpdateSpeed(float _speed) {
-            this.Speed = _speed;
-            this.velocity = new Vector2(_speed, _speed);
-        }
     }
 }

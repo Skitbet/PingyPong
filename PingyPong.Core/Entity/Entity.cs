@@ -6,8 +6,8 @@ namespace PingyPong.Entity
 {
     public abstract class Entity
     {
-        public Rectangle Rectangle { get; private set; }
-        public Vector2 Position { get; private set; }
+        public Rectangle Rectangle { get; set; }
+        public Vector2 Position { get; set; }
         public float Speed { get; set; }
 
         public Entity(int x, int y, int width, int height, float speed)

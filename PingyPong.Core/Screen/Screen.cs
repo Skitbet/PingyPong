@@ -3,21 +3,24 @@ using Microsoft.Xna.Framework.Graphics;
 
 namespace PingyPong.Screen
 {
-    public abstract class Screen {
-        
+    public abstract class Screen
+    {
+
         protected int height;
         protected int width;
 
         protected PingyPongGame game;
-        
-        protected Screen() {
+
+        protected Screen()
+        {
             this.game = PingyPongGame.instance;
-            
+
             height = game.GraphicsDevice.Viewport.Height;
             width = game.GraphicsDevice.Viewport.Width;
         }
 
-        public void UpdateScreen(GameTime time) {
+        public void UpdateScreen(GameTime time)
+        {
             height = game.GraphicsDevice.Viewport.Height;
             width = game.GraphicsDevice.Viewport.Width;
 

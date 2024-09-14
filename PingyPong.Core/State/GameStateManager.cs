@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 namespace PingyPong
 {
-    
+
     public class GameStateManager
     {
         public GameState CurrentState { get; private set; }
@@ -14,7 +14,7 @@ namespace PingyPong
         {
             CurrentState = GameState.MainMenu;
         }
-        
+
         public void ChangeState(GameState newState)
         {
             CurrentState = newState;
