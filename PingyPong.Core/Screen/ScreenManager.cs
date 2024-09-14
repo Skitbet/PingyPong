@@ -1,5 +1,6 @@
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Microsoft.Xna.Framework.Media;
 
 namespace PingyPong.Screen
 {
@@ -7,6 +8,13 @@ namespace PingyPong.Screen
 
         public Screen currentScreen { get; private set; }
 
+
+        public void SetScreen(Screen screenToSet) {
+            MediaPlayer.Stop();
+            
+            currentScreen = screenToSet;
+            LoadScreen();
+        }
 
         public void UpdateScreen(GameTime time) {
             currentScreen.UpdateScreen(time);
@@ -21,10 +29,7 @@ namespace PingyPong.Screen
             currentScreen.LoadContent();
         }
         
-        public void SetScreen(Screen screenToSet) {
-            currentScreen = screenToSet;
-            LoadScreen();
-        }
+        
 
     }
 }

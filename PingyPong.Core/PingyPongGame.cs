@@ -51,8 +51,6 @@ namespace PingyPong
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
-
-            
         }
 
         protected override void Update(GameTime gameTime)
@@ -91,7 +89,10 @@ namespace PingyPong
 
         public void OnGameOver()
         {
-            gameStateManager.ChangeState(GameState.GameOver);
+            // TODO: Game end
+            gameStateManager.ChangeState(GameState.MainMenu);
+            screenManager.SetScreen(new MainMenuScreen());
+
         }
     }
 }

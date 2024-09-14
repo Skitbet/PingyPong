@@ -2,6 +2,7 @@ using System;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using Microsoft.Xna.Framework.Media;
 using PingyPong.Entity;
 
 namespace PingyPong.Screen
@@ -14,6 +15,8 @@ namespace PingyPong.Screen
 
         Texture2D paddleTexture;
         Texture2D ballTexture;
+
+        float menuMusicFade = 0.5f;
 
         public GameScreen() {
             leftPaddle = new Paddle(30, height / 2 - 50, 10, 100, 300f, Keys.W, Keys.S);
@@ -29,6 +32,7 @@ namespace PingyPong.Screen
 
         public override void LoadContent()
         {
+            game.IsMouseVisible = false;
             paddleTexture = game.Content.Load<Texture2D>("paddle");
             ballTexture = game.Content.Load<Texture2D>("ball");
         }
