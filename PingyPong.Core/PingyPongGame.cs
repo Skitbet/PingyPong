@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using PingyPong.Entity;
+using PingyPong.Screen;
 using System;
 
 namespace PingyPong
@@ -14,7 +15,10 @@ namespace PingyPong
         private SpriteBatch _spriteBatch;
 
 
-        GameStateManager gameStateManager;
+        public GameStateManager gameStateManager;
+        public ScreenManager screenManager;
+
+
         Paddle leftPaddle;
         Paddle rightPaddle;
         Ball ball;
@@ -43,6 +47,7 @@ namespace PingyPong
             int h = GraphicsDevice.Viewport.Height;
 
             gameStateManager = new GameStateManager();
+            screenManager = new ScreenManager();
             leftPaddle = new Paddle(30, h / 2 - 50, 10, 100, 300f, Keys.W, Keys.S);
             rightPaddle = new Paddle(w - 40, h / 2 - 50, 10, 100, 300f, Keys.Up, Keys.Down);
             
@@ -53,7 +58,8 @@ namespace PingyPong
                 }
             );
 
-            gameStateManager.ChangeState(GameState.Playing);
+            gameStateManager.ChangeState(GameState.MainMenu);
+            screenManager.SetScreen(new MainMenuScreen());
 
             base.Initialize();
         }
@@ -68,6 +74,7 @@ namespace PingyPong
 
         protected override void Update(GameTime gameTime)
         {
+            screenManager.UpdateScreen(gameTime);
             // Handle start delay
             if (!_gameStarted)
             {
@@ -110,6 +117,8 @@ namespace PingyPong
             _spriteBatch.Draw(paddleTexture, rightPaddle.Rectangle, Color.White);
             _spriteBatch.Draw(ballTexture, ball.Rectangle, Color.White);
             _spriteBatch.End();
+
+            screenManager.DrawScreen(_spriteBatch);
 
             base.Draw(gameTime);
         }
