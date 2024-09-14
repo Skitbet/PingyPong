@@ -9,7 +9,7 @@ namespace PingyPong.Screen
 
 
         public void UpdateScreen(GameTime time) {
-            currentScreen.Update(time);
+            currentScreen.UpdateScreen(time);
         }
 
         public void DrawScreen(SpriteBatch batch) {
