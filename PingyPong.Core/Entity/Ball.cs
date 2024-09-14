@@ -6,7 +6,7 @@ namespace PingyPong.Entity
 {
     public class Ball : Entity
     {
-        private Vector2 velocity;
+        public Vector2 velocity;
         private Action onGameOver;
 
         public Ball(int x, int y, int width, int height, float speed, Action gameOverCallback)
@@ -40,6 +40,11 @@ namespace PingyPong.Entity
             {
                 velocity.X = -velocity.X;
             }
+        }
+
+        public void UpdateSpeed(float _speed) {
+            this.Speed = _speed;
+            this.velocity = new Vector2(_speed, _speed);
         }
     }
 }

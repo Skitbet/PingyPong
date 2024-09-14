@@ -8,7 +8,7 @@ namespace PingyPong.Entity
     {
         public Rectangle Rectangle { get; private set; }
         public Vector2 Position { get; private set; }
-        public float Speed { get; protected set; }
+        public float Speed { get; set; }
 
         public Entity(int x, int y, int width, int height, float speed)
         {

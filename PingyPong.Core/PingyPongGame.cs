@@ -19,10 +19,6 @@ namespace PingyPong
         public ScreenManager screenManager;
 
 
-        private float _startDelay = 3.0f;
-        private float _timer;
-        private bool _gameStarted;
-
         public PingyPongGame()
         {
             instance = this;
@@ -32,10 +28,6 @@ namespace PingyPong
 
         protected override void Initialize()
         {
-
-            _timer = _startDelay;
-            _gameStarted = false;
-
             int w = GraphicsDevice.Viewport.Width;
             int h = GraphicsDevice.Viewport.Height;
 
@@ -56,19 +48,6 @@ namespace PingyPong
         protected override void Update(GameTime gameTime)
         {
             screenManager.UpdateScreen(gameTime);
-            // Handle start delay
-            if (!_gameStarted)
-            {
-                _timer -= (float)gameTime.ElapsedGameTime.TotalSeconds;
-
-                if (_timer <= 0)
-                {
-                    _gameStarted = true;
-                    _timer = 0;
-                }
-                base.Update(gameTime);
-                return;
-            }
 
             // Handle exiting
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))

@@ -1,0 +1,33 @@
+{
+	"song": "testSong.ogg",
+	"bpm": 120,
+	"events": [
+		{
+			"time": 500,
+			"action": "ball_speed",
+			"speed": 200
+		},
+		{
+			"time": 1000,
+			"action": "ball_direction",
+			"direction": "left"
+		},
+		{
+			"time": 2000,
+			"action": "paddle_auto_move",
+			"paddle": "left",
+			"position": 300
+		},
+		{
+			"time": 5000,
+			"action": "ball_direction",
+			"direction": "left"
+		},
+		{
+			"time": 6500,
+			"action": "ball_speed",
+			"speed": 600
+		},
+		
+	]
+}
